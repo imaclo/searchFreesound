@@ -1,38 +1,16 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## Search Freesound React/Next.js App
 
-First, run the development server:
+This app is available live on AWS Amplify at [https://first-branch.d1hp3ehu13i5jr.amplifyapp.com/](https://first-branch.d1hp3ehu13i5jr.amplifyapp.com/).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+The brief for this technical test was:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Start with a search box that accepts input
+When return/enter (⏎) is pressed, we want to GET: https://freesound.org/apiv2/...
+The API requires authentication to be provided via the Authorization header, with value xxx
+Inspect the API response to understand the contents
+Display the name of each result in an unordered list
+Paginate the list of results
+Clicking on an item will automatically start playing an audio preview of the selected item inside a native HTML audio player
+Prevent typing in the input box or paginating while a request is in progress
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
