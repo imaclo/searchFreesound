@@ -1,9 +1,11 @@
 import { Fragment, useRef, useState } from "react";
-import { TfiControlPlay } from "react-icons/tfi";
-
 import { Dialog, Transition } from "@headlessui/react";
 
+//this is for the play icon
+import { TfiControlPlay } from "react-icons/tfi";
+
 export default function Home() {
+  //set all of the states that we're going to use
   const [disabled, setDisabled] = useState(false);
   const [search, setSearch] = useState([""]);
   const [songs, setSongs] = useState();
@@ -13,16 +15,23 @@ export default function Home() {
 
   const cancelButtonRef = useRef(null);
 
+  //update when the search box is typed in
   function handleChange(e) {
     setSearch(e.target.value);
   }
 
+  //when the form is submitted by button click or enter
   async function handleSearch(e) {
+    //stop the page from reloading
     e.preventDefault();
 
+    //disable the search box and button
     setDisabled(true);
+
+    //wipe the list of songs ready for the next list
     setSongs("");
 
+    //go and get songs from freesound
     const response = await fetch(
       "https://freesound.org/apiv2/search/text/?fields=id,name,previews&query=" +
         search,
@@ -34,13 +43,23 @@ export default function Home() {
     );
     const results = await response.json();
     //console.log(results);
+
+    //put the songs into the results
     setSongs(results);
+
+    //re-enable the functions
     setDisabled(false);
   }
 
+  //if the next button is pressed
   async function handleNext() {
+    //wipe the list of songs ready for the next list
     setSongs("");
+
+    //disable the search box and button
     setDisabled(true);
+
+    //go and get the next page of songs
     const response = await fetch(songs.next, {
       headers: {
         Authorization: "Token Dyjz7trmYZEG0jDK4eoWttjQK298Z94znjHRrf0T",
@@ -48,13 +67,23 @@ export default function Home() {
     });
     const results = await response.json();
     //console.log(results);
+
+    //put the songs into the results
     setSongs(results);
+
+    //re-enable the functions
     setDisabled(false);
   }
 
+  //if the previous button is pressed
   async function handlePrevious() {
+    //wipe the list of songs ready for the next list
     setSongs("");
+
+    //disable the search box and button
     setDisabled(true);
+
+    //go and get the next page of songs
     const response = await fetch(songs.previous, {
       headers: {
         Authorization: "Token Dyjz7trmYZEG0jDK4eoWttjQK298Z94znjHRrf0T",
@@ -62,13 +91,23 @@ export default function Home() {
     });
     const results = await response.json();
     //console.log(results);
+
+    //put the songs into the results
     setSongs(results);
+
+    //re-enable the functions
     setDisabled(false);
   }
 
+  //if a song is clicked
   function handleSong(song) {
+    //this will open our modal
     setOpen(true);
+
+    //this will set the filename title
     setFilename(song.name);
+
+    //this will set the media player to the correct url
     setPreviewURL(song.previews["preview-lq-mp3"]);
   }
 
